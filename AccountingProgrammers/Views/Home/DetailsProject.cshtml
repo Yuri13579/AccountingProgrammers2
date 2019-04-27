@@ -1,0 +1,24 @@
+﻿@model AccountingProgrammers.Models.Project
+
+@{
+    ViewData["Title"] = "DetailsProject";
+}
+
+<h2>DetailsProject</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ProjectId">Edit</a> |
+    <a asp-action="ProjectList">Back to List</a>
+</div>

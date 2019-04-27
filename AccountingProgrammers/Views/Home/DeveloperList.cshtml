@@ -1,0 +1,17 @@
+﻿@model IEnumerable<AccountingProgrammers.Models.Developer>
+
+@{
+    ViewData["Title"] = "DeveloperList";
+}
+
+<h2>ProjectList</h2>
+
+<p>
+    <a asp-action="CreateDeveloper">CreateDeveloper</a>
+</p>
+
+<div class="table table-hover ">
+    <div class="table table-bordered">
+        @Html.Partial("_DeveloperList", Model)
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AccountingProgrammers.Models.ProjectDeveloper>
+
+@{
+    ViewData["Title"] = "ProjectDeveloperList";
+}
+
+<h2>ProjectDeveloperList</h2>
+
+<p>
+    <a asp-action="CreateProjectDeveloper">Create New</a>
+</p>
+<div class="table table-hover ">
+<div class="table table-bordered">
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr class="table-warning">
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Developer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectName  )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Developer.DeveloperName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProjectDeveloper", new { ProjectId = item.ProjectId, DeveloperId = item.DeveloperId }) |
+                @Html.ActionLink("Details", "DetailsProjectDeveloper", new { ProjectId = item.ProjectId, DeveloperId = item.DeveloperId }) |
+                @Html.ActionLink("Delete", "DeleteProjectDeveloper", new { ProjectId = item.ProjectId, DeveloperId = item.DeveloperId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
+</div>

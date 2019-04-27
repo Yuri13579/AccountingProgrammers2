@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AccountingProgrammers.Models.Project>
+
+
+
+<div class="table-responsive" id="project-list">
+   
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    <a asp-action="EditProject" asp-route-id="@item.ProjectId">Edit</a> |
+                    <a asp-action="DetailsProject" asp-route-id="@item.ProjectId">Details</a> |
+                    <a href="#" data-id="@item.ProjectId" name="delete-project">Delete</a>
+
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+
+<script>
+    $(function() {
+    
+        $('a[name="delete-project"]').click(function() {
+            var id = $(this).attr("data-id");
+            $.ajax({
+                type: "POST",
+              //  contentType: "application/json",
+                url: '@Url.Action("ProjectDelete", "Home")',
+                 data: {
+                     'id': id,
+                 },
+                    success: function (result) {
+                     $("#project-list").html(result);
+                         
+
+
+                    }
+        });
+
+            
+       
+    });
+});
+</script>
